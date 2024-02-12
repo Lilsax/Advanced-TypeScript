@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -45,7 +46,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
+Object.defineProperty(exports, "__esModule", { value: true });
 var returnWhatIsPassed = function (t) {
     return t;
 };
@@ -113,7 +114,7 @@ var obj = aww.reduce(function (acc, item) {
     acc[item.name] = item;
     return acc;
 }, {});
-var fetchData = function (uri) { return __awaiter(_this, void 0, void 0, function () {
+var fetchData = function (uri) { return __awaiter(void 0, void 0, void 0, function () {
     var data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -124,7 +125,7 @@ var fetchData = function (uri) { return __awaiter(_this, void 0, void 0, functio
         }
     });
 }); };
-var getSomeData = function () { return __awaiter(_this, void 0, void 0, function () {
+var getSomeData = function () { return __awaiter(void 0, void 0, void 0, function () {
     var data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -143,7 +144,7 @@ var getHomePageFeatureFlags = function (config, override) {
 };
 var example = {
     name: "tasneem",
-    age: 22,
+    age: 23,
     rawConfig: {
         featureFlags: {
             homePage: {
@@ -283,3 +284,18 @@ var objw = {
 var j = getValue(objw, "a");
 var k = getValue(objw, "b");
 var z = getValue(objw, "c");
+// use case for global useState
+var makeUseStyled = function () {
+    var useStyled = function (func) {
+        return {};
+    };
+    return useStyled;
+};
+var useStyled = makeUseStyled();
+var buttonStyle = useStyled(function (theme) { return ({
+    color: theme.color.primary,
+    fontSize: theme.fontSize.small
+}); });
+var divStyle = useStyled(function (theme) { return ({
+    backgroundColor: theme.color.primary,
+}); });

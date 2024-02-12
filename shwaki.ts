@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 const returnWhatIsPassed = <T extends string>(t: T) => {
   return t;
 };
@@ -399,3 +401,37 @@ const objw = {
 const j = getValue(objw, "a");
 const k = getValue(objw, "b");
 const z = getValue(objw, "c");
+
+
+
+
+// use case for global useState
+
+const makeUseStyled = <TTheme = {}> () => {
+  const useStyled =(func: (theme: TTheme) => CSSProperties) => {
+    return {} as CSSProperties 
+ } 
+
+ return useStyled
+}
+
+
+interface MyTheme {
+  color:  {
+    primary: string
+  };
+  fontSize: {
+    small: string
+  }
+}
+
+const useStyled = makeUseStyled<MyTheme>();
+
+const buttonStyle = useStyled((theme) => ({
+  color: theme.color.primary,
+  fontSize: theme.fontSize.small
+}))
+
+const divStyle = useStyled((theme) => ({
+  backgroundColor: theme.color.primary,
+}))
