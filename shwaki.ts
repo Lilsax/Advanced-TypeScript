@@ -277,7 +277,7 @@ const makeSafe =
   
   const sayGreetings = <T extends "goodbye" | "hello">(
     s: T
-  ): T extends "goodbye" ? "hello" : "goodbye" => {
+  ): T extends "goodbye" ? "hello" : "goodbye " => {
     return (s == "goodbye" ? "hello" : "goodbye") as THelper<T>;
   };
 
@@ -435,3 +435,63 @@ const buttonStyle = useStyled((theme) => ({
 const divStyle = useStyled((theme) => ({
   backgroundColor: theme.color.primary,
 }))
+
+
+
+const o = <T extends string>(obj: Record<string, T> & {
+  a: T
+}): T => {
+  return obj.a as T;
+};
+
+const p = <T>(obj: T & {
+  a: string
+}) => {
+  return obj.a;
+};
+
+const owias = o({ a: "2" });
+const owiasV2 = p({ a: "1" });
+
+
+console.log("ASDDASDD");
+
+
+const makeSelector =
+  <Source>() =>
+  <TSource extends Record<string, (source: Source) => any>>(
+    selector: TSource
+  ) => {
+    return selector;
+  };
+
+interface Source {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+} 
+
+const selector = makeSelector<Source>()({
+  getFullName: (src) => `${src.firstName} ${src.middleName} ${src.lastName}`,
+  getFirstNameAndLastName: (src) => `${src.firstName}  ${src.lastName}`,
+  getFirstNameLength: (src) => src.firstName.length,
+}); 
+
+const uwu  =  selector.getFullName({
+  firstName: "sleman",
+  middleName:  "Saamer",
+  lastName: "Zaitoun"
+})
+
+console.log("uwu", uwu);
+
+
+function returnWhatIPassIn(s: string): string;
+function returnWhatIPassIn(s: number): number;
+
+function returnWhatIPassIn(s: unknown)  {
+  return  s;
+}
+
+const matt =  returnWhatIPassIn("matt")
+const one =  returnWhatIPassIn(1)

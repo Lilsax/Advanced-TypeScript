@@ -1,4 +1,3 @@
-"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -46,7 +45,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+var _this = this;
 var returnWhatIsPassed = function (t) {
     return t;
 };
@@ -114,7 +113,7 @@ var obj = aww.reduce(function (acc, item) {
     acc[item.name] = item;
     return acc;
 }, {});
-var fetchData = function (uri) { return __awaiter(void 0, void 0, void 0, function () {
+var fetchData = function (uri) { return __awaiter(_this, void 0, void 0, function () {
     var data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -125,7 +124,7 @@ var fetchData = function (uri) { return __awaiter(void 0, void 0, void 0, functi
         }
     });
 }); };
-var getSomeData = function () { return __awaiter(void 0, void 0, void 0, function () {
+var getSomeData = function () { return __awaiter(_this, void 0, void 0, function () {
     var data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -239,88 +238,20 @@ var curryFunction = function (t) {
     };
 };
 curryFunction(1)(2)(3);
-var createCashe = function (initialCache) {
-    var cache = initialCache || {};
+var createCashe = function (initialCashe) {
+    var cashe = initialCashe || {};
     return {
-        get: function (key) { return cache[key]; },
-        set: function (key, value) { return (cache[key] = value); },
+        get: function (key) { return cashe[key]; },
+        set: function (key, value) { return (cashe[key] = value); },
         clone: function (transform) {
-            var newCache = {};
-            for (var sleman in cache) {
-                newCache[sleman] = transform(cache[sleman]);
+            var newCashe = {};
+            for (var sleman in cashe) {
+                newCashe[sleman] = transform(cashe[sleman]);
             }
-            return newCache;
+            return newCashe;
         },
     };
 };
 var numberCache = createCashe();
 numberCache.set("a", 1);
 console.log("pushing P", numberCache.get("a"));
-// what i wrote 
-var returnBothOfWhatIPassIn = function (params) {
-    return [params.a, params.b];
-};
-// actual soluation 
-var returnBothOfWhatIPassInV2 = function (params) {
-    return [params.a, params.b];
-};
-returnBothOfWhatIPassIn({
-    a: 1,
-    b: "2",
-});
-returnBothOfWhatIPassInV2({
-    a: 1,
-    b: "2",
-});
-console.log("another one");
-var getValue = function (obj, key) {
-    return obj[key];
-};
-var objw = {
-    a: 1,
-    b: "b",
-    c: true,
-};
-var j = getValue(objw, "a");
-var k = getValue(objw, "b");
-var z = getValue(objw, "c");
-// use case for global useState
-var makeUseStyled = function () {
-    var useStyled = function (func) {
-        return {};
-    };
-    return useStyled;
-};
-var useStyled = makeUseStyled();
-var buttonStyle = useStyled(function (theme) { return ({
-    color: theme.color.primary,
-    fontSize: theme.fontSize.small
-}); });
-var divStyle = useStyled(function (theme) { return ({
-    backgroundColor: theme.color.primary,
-}); });
-var o = function (obj) {
-    return obj.a;
-};
-var p = function (obj) {
-    return obj.a;
-};
-var owias = o({ a: "2" });
-var owiasV2 = p({ a: "1" });
-console.log("ASDDASDD");
-var makeSelector = function () {
-    return function (selector) {
-        return selector;
-    };
-};
-var selector = makeSelector()({
-    getFullName: function (src) { return "".concat(src.firstName, "   ").concat(src.middleName, " ").concat(src.lastName); },
-    getFirstNameAndLastName: function (src) { return "".concat(src.firstName, "  ").concat(src.lastName); },
-    getFirstNameLength: function (src) { return src.firstName.length; },
-});
-var uwu = selector.getFullName({
-    firstName: "sleman",
-    middleName: "Saamer",
-    lastName: "Zaitoun"
-});
-console.log("uwu", uwu);
